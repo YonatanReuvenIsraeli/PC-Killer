@@ -7,7 +7,7 @@ echo READ DISCLAIMER ^-^-^> THIS IS FOR EDUCATIONAL PURPOSES ONLY! DO NOT USE TH
 
 :Disclaimer
 echo.
-set /p Disclaimer="Do you agree to the Disclaimer? (Yes/No) "
+set /p "Disclaimer"="Do you agree to the Disclaimer? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto :Fix
 if /i "%Disclaimer%"=="No" goto :Close
 echo Invalid Syntax!
@@ -15,7 +15,7 @@ goto :Disclaimer
 
 :Fix
 echo.
-set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR% and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller. Do you know how to do this? (Yes/No) "
+set /p "Fix"="To fix the computer boot into WinRE, Navigate to %WINDIR% and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller. Do you know how to do this? (Yes/No) "
 if /i "%Fixr%"=="Yes" goto :Warning
 if /i "%Fix%"=="No" goto :Close
 echo Invalid Syntax!
@@ -23,7 +23,7 @@ goto :Fix
 
 :Warning
 echo.
-set /p Warning="READ WARNING ^-^-^> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THE COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
+set /p "Warning"="READ WARNING ^-^-^> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THE COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto :Kill
 if /i "%Disclaimer%"=="No" goto :Close
 echo Invalid Syntax!

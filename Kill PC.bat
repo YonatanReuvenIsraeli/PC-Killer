@@ -39,3 +39,4 @@ Shutdown /r /t 00
 
 :Close
 endlocal
+exit

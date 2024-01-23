@@ -1,4 +1,5 @@
 # PC Killer
+
 ## This batch file, named "PC Killer.bat", is designed for educational purposes only to demonstrate potential vulnerabilities in Windows operating systems. It should only be used in controlled testing environments with explicit authorization.
 
 ## Key Points:
@@ -12,4 +13,4 @@
 ## Remember:
 **Safety First:** Always prioritize safety and responsible use of any script or tool that can modify system files.  
 **Ethical Considerations:** Obtain explicit permission before using such scripts on any system, even in testing environments.  
-**Seek Guidance:** If you have any doubts or concerns, consult with qualified IT professionals before proceeding.  
+**Seek Guidance:** If you have any doubts or concerns, consult with qualified IT professionals before proceeding.

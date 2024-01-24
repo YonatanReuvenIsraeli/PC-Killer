@@ -23,7 +23,7 @@ goto :Fix
 
 :Warning
 echo.
-set /p Warning="READ WARNING ^-^-^> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THE COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
+set /p Warning="READ WARNING ^-^-^> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto :Kill
 if /i "%Disclaimer%"=="No" goto :Close
 echo Invalid Syntax!

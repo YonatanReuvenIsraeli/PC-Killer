@@ -1,7 +1,7 @@
 @echo off
 title PC Killer
 setlocal
-echo PC Killer v1.0
+echo PC Killer v1.0.0
 echo.
 echo Please run this batch file as an administrator.
 echo.

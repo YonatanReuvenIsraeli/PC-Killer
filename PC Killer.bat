@@ -1,7 +1,11 @@
 @echo off
 title PC Killer
 setlocal
-echo PC Killer v1.0.0
+echo Program Name: PC Killer
+echo Version: 1.1.0
+echo Developer: @YonatanReuvenIsraeli
+echo Website: https://www.yonatanreuvenisraeli.dev
+echo License: GNU General Public License v3.0
 echo.
 echo Please run this batch file as an administrator.
 echo.

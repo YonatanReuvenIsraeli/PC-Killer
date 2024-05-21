@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.1.3
+echo Version: 1.2.0
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -30,7 +30,7 @@ goto Disclaimer
 :Fix
 echo.
 set Fix=
-set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR%\System32 and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller. Do you know how to do this? (Yes/No) "
+set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR%\System32 and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
 if /i "%Fix%"=="Yes" goto Warning
 if /i "%Fix%"=="No" goto Close
 echo Invalid Syntax!

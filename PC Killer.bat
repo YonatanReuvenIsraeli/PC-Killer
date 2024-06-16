@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.0
+echo Version: 1.3.1
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
@@ -24,7 +24,7 @@ set Disclaimer=
 set /p Disclaimer="Do you agree to the Disclaimer? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto Fix
 if /i "%Disclaimer%"=="No" goto Close
-echo Invalid Syntax!
+echo Invalid syntax!
 goto Disclaimer
 
 :Fix
@@ -33,7 +33,7 @@ set Fix=
 set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR%\System32 and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
 if /i "%Fix%"=="Yes" goto Warning
 if /i "%Fix%"=="No" goto Close
-echo Invalid Syntax!
+echo Invalid syntax!
 goto Fix
 
 :Warning
@@ -42,7 +42,7 @@ set Warning=
 set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto Kill
 if /i "%Disclaimer%"=="No" goto Close
-echo Invalid Syntax!
+echo Invalid syntax!
 goto Warning
 
 :Kill

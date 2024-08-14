@@ -2,63 +2,61 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.1
+echo Version: 1.3.2
 echo Developer: @YonatanReuvenIsraeli
 echo Website: https://www.yonatanreuvenisraeli.dev
 echo License: GNU General Public License v3.0
 net session > nul 2>&1
-if not "%errorlevel%"=="0" goto NotAdministrator
-goto Disclaimer
+if not "%errorlevel%"=="0" goto "NotAdministrator"
+goto "Disclaimer"
 
-:NotAdministrator
+:"NotAdministrator"
 echo.
 echo Please run this batch file as an administrator. Press any key to close this batch file.
 pause > nul 2>&1
-goto Close
+goto "Close"
 
-:Disclaimer
+:"Disclaimer"
 echo.
 echo READ DISCLAIMER ^-^-^> THIS IS FOR EDUCATIONAL PURPOSES ONLY! DO NOT USE THIS ON SOMEONE ELSES PC WITHOUT THEIR EXPLICIT PERMISSION! THIS WILL KILL THIS PC! CONTINUE AT YOUR OWN RISK! WE HOLD NO RESPONSIBILITY FOR PC DAMAGE, LOSS OF DATA, AND/OR ANYTHING ELSE, EVEN IF THE INSTRUCTIONS ARE WRONG, AND/OR MISSING, AND/OR THIS BATCH FILE DOES SOMETHING ELSE OTHER THAN INTENDED!
 echo.
 set Disclaimer=
 set /p Disclaimer="Do you agree to the Disclaimer? (Yes/No) "
-if /i "%Disclaimer%"=="Yes" goto Fix
-if /i "%Disclaimer%"=="No" goto Close
+if /i "%Disclaimer%"=="Yes" goto "Fix"
+if /i "%Disclaimer%"=="No" goto "Close"
 echo Invalid syntax!
-goto Disclaimer
+goto "Disclaimer"
 
-:Fix
+:"Fix"
 echo.
 set Fix=
 set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR%\System32 and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
-if /i "%Fix%"=="Yes" goto Warning
-if /i "%Fix%"=="No" goto Close
+if /i "%Fix%"=="Yes" goto "Warning"
+if /i "%Fix%"=="No" goto "Close"
 echo Invalid syntax!
-goto Fix
+goto "Fix"
 
-:Warning
+:"Warning"
 echo.
 set Warning=
 set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
-if /i "%Disclaimer%"=="Yes" goto Kill
-if /i "%Disclaimer%"=="No" goto Close
+if /i "%Disclaimer%"=="Yes" goto "Kill"
+if /i "%Disclaimer%"=="No" goto "Close"
 echo Invalid syntax!
-goto Warning
+goto "Warning"
 
-:Kill
+:"Kill"
 takeown /f "%SystemRoot%\System32\hal.dll"
 icacls "%SystemRoot%\System32\hal.dll" /grant %USERNAME%:(d,wdac)
 ren "%SystemRoot%\System32\hal.dll" "hal1.dll"
-if not "%errorlevel%"=="0" goto Error
+if not "%errorlevel%"=="0" goto "Error"
 endlocal
 shutdown /r /t 00
-exit
 
-:Error
-echo.
+:"Error"
 echo There has been an error! You can try again.
-goto Disclaimer
+goto "Disclaimer"
 
-:Close
+:"Close"
 endlocal
 exit

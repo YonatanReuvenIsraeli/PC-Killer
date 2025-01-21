@@ -31,7 +31,7 @@ goto "Disclaimer"
 :"Fix"
 echo.
 set Fix=
-set /p Fix="To fix the computer boot into WinRE, and rename "%windir%\System32\hal1.dll" to "hal.dll" then change owner to NT Service\TrustedInstaller and delete %USERNAME% permissions from "%windir%\System32\hal.dll" or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
+set /p Fix="To fix the computer boot into WinRE, and rename "%windir%\System32\hal" to "hal.dll" then change owner to NT Service\TrustedInstaller and delete %USERNAME% permissions from "%windir%\System32\hal.dll" or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
 if /i "%Fix%"=="Yes" goto "Warning"
 if /i "%Fix%"=="No" goto "Close"
 echo Invalid syntax!
@@ -49,7 +49,7 @@ goto "Warning"
 :"Kill"
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul
-ren "%windir%\System32\hal.dll" "hal1.dll"
+ren "%windir%\System32\hal.dll" "hal"
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
 "%windir%\System32\shutdown.exe" /r /t 00

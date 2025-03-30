@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.17
+echo Version: 1.3.18
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -40,7 +40,7 @@ goto "Fix"
 :"Warning"
 echo.
 set Warning=
-set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! ARE YOU SURE YOU WANT TO CONTINUE? PLEASE SAVE EVERTHING YOU WANT BEFORE ANSWERING "Yes". (Yes/No) "
+set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! PLEASE SAVE EVERTHING YOU WANT BEFORE ANSWERING "Yes". ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Warning%"=="Yes" goto "Kill"
 if /i "%Warning%"=="No" goto "Close"
 echo Invalid syntax!

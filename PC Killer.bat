@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.16
+echo Version: 1.3.17
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -40,7 +40,7 @@ goto "Fix"
 :"Warning"
 echo.
 set Warning=
-set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
+set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! ARE YOU SURE YOU WANT TO CONTINUE? PLEASE SAVE EVERTHING YOU WANT BEFORE ANSWERING "Yes". (Yes/No) "
 if /i "%Warning%"=="Yes" goto "Kill"
 if /i "%Warning%"=="No" goto "Close"
 echo Invalid syntax!
@@ -52,7 +52,7 @@ goto "Warning"
 ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
 if not "%errorlevel%"=="0" goto "Error"
 endlocal
-"%windir%\System32\shutdown.exe" /r /t 00
+"%windir%\System32\shutdown.exe" /r /t 0
 exit
 
 :"Error"

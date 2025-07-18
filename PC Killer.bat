@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.4.3
+echo Version: 1.4.4
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -65,6 +65,7 @@ endlocal
 exit
 
 :"Error"
+echo.
 echo There has been an error! Press any key to try again.
 pause > nul 2>&1
 goto "CheckKill"

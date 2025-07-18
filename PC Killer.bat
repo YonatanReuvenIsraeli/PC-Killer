@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.22
+echo Version: 1.4.0
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -41,14 +41,20 @@ goto "Fix"
 echo.
 set Warning=
 set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! PLEASE SAVE EVERTHING YOU WANT BEFORE ANSWERING "YES". ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
-if /i "%Warning%"=="Yes" goto "Kill"
+if /i "%Warning%"=="Yes" goto "CheckKill"
 if /i "%Warning%"=="No" goto "Exit"
 echo Invalid syntax!
 goto "Warning"
 
+:"CheckKill"
+echo.
+echo Checking if this PC can be killed by this batch file.
+if exist "%windir%\System32\hal.dll" if not exist "%windir%\System32\hal" goto "Kill"
+echo This PC cannot be killed by this batch file. Press any key to close this batch file.
+pause > nul 2>&1
+goto "Exit"
+
 :"Kill"
-if not exist "%windir%\System32\hal.dll" goto "CannotKill"
-if exist "%windir%\System32\hal" goto "CannotKill"
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul 2>&1
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul 2>&1
 ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
@@ -56,12 +62,6 @@ if not "%errorlevel%"=="0" goto "Error"
 endlocal
 "%windir%\System32\shutdown.exe" /r /t 0
 exit
-
-:"CannotKill"
-echo.
-echo This PC cannot be killed by this batch file. Press any key to close this batch file.
-pause > nul 2>&1
-goto "Exit"
 
 :"Error"
 echo There has been an error! You can try again.

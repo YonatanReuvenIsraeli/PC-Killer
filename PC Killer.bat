@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.3.21
+echo Version: 1.3.22
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -15,7 +15,7 @@ goto "Disclaimer"
 echo.
 echo Please run this batch file as an administrator. Press any key to close this batch file.
 pause > nul 2>&1
-goto "Close"
+goto "Exit"
 
 :"Disclaimer"
 echo.
@@ -24,16 +24,16 @@ echo.
 set Disclaimer=
 set /p Disclaimer="Do you agree to the Disclaimer? (Yes/No) "
 if /i "%Disclaimer%"=="Yes" goto "Fix"
-if /i "%Disclaimer%"=="No" goto "Close"
+if /i "%Disclaimer%"=="No" goto "Exit"
 echo Invalid syntax!
 goto "Disclaimer"
 
 :"Fix"
 echo.
 set Fix=
-set /p Fix="To fix the computer boot into WinRE, and rename "%windir%\System32\hal" to "hal.dll" then change owner to NT Service\TrustedInstaller and delete %USERNAME% permissions from "%windir%\System32\hal.dll" or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
+set /p Fix="To fix this PC, boot into WinRE and rename "%windir%\System32\hal" to "hal.dll" then change owner to NT Service\TrustedInstaller and delete %USERNAME% permissions from "%windir%\System32\hal.dll" or use "PC Reviver.bat" made by @YonatanReuvenIsraeli. Do you know how to do this? (Yes/No) "
 if /i "%Fix%"=="Yes" goto "Warning"
-if /i "%Fix%"=="No" goto "Close"
+if /i "%Fix%"=="No" goto "Exit"
 echo Invalid syntax!
 goto "Fix"
 
@@ -42,12 +42,13 @@ echo.
 set Warning=
 set /p Warning="READ WARNING --> THERE IS NO GOING BACK AFTER THIS! THIS IS YOUR LAST CHANCE TO STOP! THIS WILL KILL THIS PC! PLEASE SAVE EVERTHING YOU WANT BEFORE ANSWERING "YES". ARE YOU SURE YOU WANT TO CONTINUE? (Yes/No) "
 if /i "%Warning%"=="Yes" goto "Kill"
-if /i "%Warning%"=="No" goto "Close"
+if /i "%Warning%"=="No" goto "Exit"
 echo Invalid syntax!
 goto "Warning"
 
 :"Kill"
-if exist "%windir%\System32\hal" goto "halExist"
+if not exist "%windir%\System32\hal.dll" goto "CannotKill"
+if exist "%windir%\System32\hal" goto "CannotKill"
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul 2>&1
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul 2>&1
 ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
@@ -56,16 +57,16 @@ endlocal
 "%windir%\System32\shutdown.exe" /r /t 0
 exit
 
-:"halExist"
+:"CannotKill"
 echo.
-echo Please rename to something else or move to another location "%windir%\System32\hal" in order for this batch file to proceed. "%windir%\System32\hal" is not a system file. Press any key to continue when "%windir%\System32\hal" is renamed to something else or moved to another location.
+echo This PC cannot be killed by this batch file. Press any key to close this batch file.
 pause > nul 2>&1
-goto "Kill"
+goto "Exit"
 
 :"Error"
 echo There has been an error! You can try again.
 goto "Disclaimer"
 
-:"Close"
+:"Exit"
 endlocal
 exit

